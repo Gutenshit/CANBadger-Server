@@ -2,8 +2,9 @@
 The CANBadgers best friend!
 
 # Quickstart
-Unpack the binaries[url] and run the program.
+Unpack the binaries and run the program.
 The binaries come with all required libraries and are tested on ubuntu and windows.
+If you want to write your custom python script to talk to the CanBadger, have a look at the [examples](https://github.com/Gutenshit/CANBadger-Server/tree/master/examples)
 
 # Run from source
 Required packages: python2, pyqt
