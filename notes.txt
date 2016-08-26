@@ -1,0 +1,29 @@
+# dev notes
+# author: H. Ferdinand Nölscher
+
+# General Setup
+- LPC XPresso Free Edition is good3
+- Use Xpresso LPC1769 board, plug and play on os x
+- to import mbed projects: "import" from the quickstart bar
+- to compile with ethernet and rtos libs:
+  https://developer.mbed.org/users/Ryohei3agimoto/notebook/compiler-error-of-ethernetinterface/
+
+# EthernetManager
+Concept:
+It will use UDP for lightweight data transmission -> should be reliable enough, as we have ethernet
+There will be two different "channels"
+- The first one will be the Discovery Channel -> broadcast uid to port so software can identify nodes
+  - use dst port 13370 for broadcast packets
+- the second one will be the Config/action/data Channel
+  - listen on port 13371
+  - for configuration:
+    - action = connect : port
+    - action = config
+    - data = key:value
+  - for other actions:
+    - action = (replay, filter, or some other shit)
+    - data = packet (-sequence) to replay/some other shit
+  - once enabled through CONNECT, send packet data to dst port specified in connect action
+  - all replies come from here
+  - everything network related runs in the main thread
+  - interrupt will set flags for sending broadcasts
