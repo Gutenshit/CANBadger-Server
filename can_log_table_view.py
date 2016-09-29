@@ -27,18 +27,18 @@ class CanLogTableView(QTableView):
     @pyqtSlot()
     def onReplayActionTriggered(self):
 #        frame = self.model().sourceModel().getFrame(self.currentIndex())
-        frame = self.model().getFrame(self.currentIndex())
+        frame = self.model().sourceModel().getFrame(self.currentIndex())
         self.sendToReplay.emit(frame)
 
     @pyqtSlot()
     def onCreateRuleByIdActionTriggered(self):
         #frame = self.model().sourceModel().getFrame(self.currentIndex())
-        frame = self.model().getFrame(self.currentIndex())
+        frame = self.model().sourceModel().getFrame(self.currentIndex())
         self.createRuleForId.emit(frame)
 
     @pyqtSlot()
     def onCreateRuleByPayloadActionTriggered(self):
         #frame = self.model().sourceModel().getFrame(self.currentIndex())
-        frame = self.model().getFrame(self.currentIndex())
+        frame = self.model().sourceModel().getFrame(self.currentIndex())
         self.createRuleForPayload.emit(frame)
 
