@@ -75,7 +75,7 @@ class ReplayHandler(QObject):
         formatted_frames = []
         for frame in self.model.getFrames():
             id = struct.pack('h', int(str(frame[1]), 16))
-            frame_payload_raw = str(QByteArray.fromHex(frame[2]))
+            frame_payload_raw = str(QByteArray.fromHex(frame[2].toAscii()))
             payload = struct.pack("%ds" % len(frame_payload_raw), frame_payload_raw)
             formatted_frames.append(id + payload)
 
